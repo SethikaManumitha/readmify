@@ -10,16 +10,25 @@ import (
 )
 
 func InitFunction(cmd *cobra.Command, args []string) {
-	structre, _ := cmd.Flags().GetBool("structure")
+	structure, _ := cmd.Flags().GetBool("structure")
 
-	destFile, err := os.Create("README.md")
+	// fails if file exists
+	destFile, err := os.OpenFile("README.md", os.O_RDWR|os.O_CREATE|os.O_EXCL, 0644)
+
 	if err != nil {
-		fmt.Println("Error creating README.md file:", err)
-		return
+		// Check if file already exists
+		if os.IsExist(err) {
+			fmt.Println("README.md already exists. Initialization aborted to prevent overwriting.")
+			return
+		} else {
+			fmt.Println(err)
+			return
+		}
 	}
 	defer destFile.Close()
 
-	if structre {
+	// Check flag
+	if structure {
 		_, err = io.Copy(destFile, bytes.NewReader(StructureTemplate))
 		fmt.Println("Project Structure will be added to README")
 	} else {
