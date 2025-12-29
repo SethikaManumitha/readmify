@@ -1,4 +1,4 @@
-# Project Title
+# {{PROJECT_NAME}}
 **Lorem Ipsum Project**  
 
 ## Description
@@ -20,4 +20,5 @@ git clone https://github.com/username/project-name.git
 
 # Navigate to the project directory
 cd project-name
+```
 

@@ -1,4 +1,4 @@
-# Project Title
+# READMIFY PROJECT
 **Lorem Ipsum Project**  
 
 ## Description
@@ -20,4 +20,28 @@ git clone https://github.com/username/project-name.git
 
 # Navigate to the project directory
 cd project-name
+```
 
+
+
+## Project Structure
+
+```text
+├── LICENSE
+├── README.md
+├── go.mod
+├── go.sum
+├── main.exe
+├── main.go
+├── model
+│   ├── file.go
+│   ├── folder.go
+├── services
+│   ├── initFunction.go
+│   ├── removeFunction.go
+│   ├── templates
+│   │   ├── init.md
+│   │   ├── structure.md
+│   ├── templates.go
+└── README.md
+```

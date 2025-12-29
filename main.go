@@ -15,7 +15,18 @@ func main() {
 		Run:   services.InitFunction,
 	}
 
-	initCmd.Flags().BoolP("structure","s",false,"Add Project Structure to README")
+	removeCmd := cobra.Command{
+		Use:   "rm",
+		Short: "Remove the existing README file",
+		Long:  "Remove the existing README file from the current directory",
+		Run:   services.RemoveFunction,
+	}
+
+	//initCmd.Flags().BoolP("debug", "d", false, "Temporary debug setting")
+
+	initCmd.Flags().BoolP("structure", "s", false, "Add Project Structure to README")
+	initCmd.Flags().StringP("name", "n", "", "Specify the project name")
+
 	rootCmd := cobra.Command{
 		Use:   "readmify",
 		Short: "A tool to generate README files",
@@ -25,5 +36,6 @@ func main() {
 	}
 
 	rootCmd.AddCommand(&initCmd)
+	rootCmd.AddCommand(&removeCmd)
 	rootCmd.Execute()
 }
